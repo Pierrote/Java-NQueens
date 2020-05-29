@@ -67,6 +67,34 @@ static List<String> num = new ArrayList<String>();
         }    
         
     }
+        
+        else if(args[0].equals("allValid")){
+       
+        List<String> save = new ArrayList<>(); 
+        
+        int m = Integer.parseInt(args[1]);
+        save = allValid(m);
+        int i = 0;
+        int y = save.size();
+        String[] mamen = new String[y];
+        
+        while( i < y){
+                   
+                    mamen[i] = save.get(i);
+                    
+                    mamen[i] = mamen[i].replaceAll("\\s", "");
+                    mamen[i] = mamen[i].replaceAll("\\[", "");
+                    mamen[i] = mamen[i].replaceAll("\\]", "");
+                    mamen[i] = mamen[i].replaceAll(",", "\n");
+                    System.out.println(mamen[i]);
+                    i++;
+        }    
+        
+    }
+        
+        
+        
+        
             
     }        
     static List<String> random(int m, int q, int n ) { 
@@ -209,6 +237,76 @@ static List<String> num = new ArrayList<String>();
             
             
         }
+    
+    static List<String> allValid(int m){
+        
+        List<String> nu = new ArrayList<>();
+        List<String> pois = new ArrayList<>();
+        
+        
+        nu = all(m);
+        int i = 0;
+        int y = nu.size();
+        String[] mamen = new String[y];
+        
+        while( i < y){
+                   
+                    mamen[i] = nu.get(i);
+                    
+                    mamen[i] = mamen[i].replaceAll("\\s", "");
+                    mamen[i] = mamen[i].replaceAll("\\[", "");
+                    mamen[i] = mamen[i].replaceAll("\\]", "");
+                    mamen[i] = mamen[i].replaceAll(",", "\n");
+                    
+                    String str = mamen[i];
+                    Tabuleiro tab = new Tabuleiro(str);
+                    
+                    int count = 0;
+                    
+                    int po = 0;
+                    
+                    for(int l = 0; l < tab.m; l++){
+                        for(int c = 0; c < tab.m; c++){
+                            
+                            if(str.charAt(po) == 'D'){
+                                
+                                if(tab.ameacada(l, c)){
+                                    
+                                    
+                                    count = 1;
+                                    break;
+                                }
+                                
+                            }
+                            
+                            po++;
+                        }
+                        
+                        if(count == 1){
+                            break;
+                        }
+                        
+                        
+                    }
+                    if(count == 0 ){
+                        pois.add(str);
+                        
+                    }
+                    
+                    
+                    i++;
+        }    
+        
+        
+            
+            
+            
+        return pois;
+        
+        
+        
+        
+    }
         
         
 }      
