@@ -1,0 +1,71 @@
+
+public class Gerador {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        List<String> save = new ArrayList<>();
+        int m = s.nextInt();
+        int q = s.nextInt();      
+        int n = s.nextInt();
+        int saver = n;
+        save = random(m, q, n);
+        int sz = save.size();
+        int lim = sz/n;
+        int i = 0;
+        while(saver != 0){
+        for(; i < lim  ; i++){
+            System.out.print(save.get(i));
+            }
+            System.out.print("\n");
+            lim = lim +(sz/n);
+            saver--;
+        }
+        
+    }
+            
+        
+    static List<String> random(int m, int q, int n ) { 
+        
+        List<String> nums = new ArrayList<String>();
+        int c = m;
+        int rainhas = q;
+        int cof = n;
+        int size = (c*c);
+        int man = rainhas;
+        if(rainhas <= c){
+        while(cof != 0){
+           rainhas = man;
+        int count = 0;
+         String[] str = new String[size];
+         
+            while(count < size ){
+            
+             str[count] = "-";    
+            count++;
+            
+            
+            }
+            
+                Random r = new Random();
+                while(rainhas != 0){
+                int a = r.nextInt(size);
+                
+                    if(str[a] != "D"){
+                    str[a] = "D";
+                    rainhas--;
+                        }
+                        
+                    }
+                count = 0;
+                while(count < size){
+                    nums.add(str[count]);
+                    count++;
+                }
+                
+                cof--;
+                }
+            
+        }
+       
+        return nums;
+    }     
+}
