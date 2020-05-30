@@ -55,7 +55,7 @@ public class Validador {
             }
             
             
-        }else if(args[0].equals("Filtro")){
+        }else if(args[0].equals("filtro")){
             
             Scanner s = new Scanner(System.in);
                      
