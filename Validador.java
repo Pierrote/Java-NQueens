@@ -10,16 +10,14 @@ public class Validador {
         
         if(args.length == 0){
                      
-       
-            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+            Scanner s = new Scanner(System.in);
+            
                                
             String setup = null;
             
-            try {
-                setup = br.readLine();
-            } catch (IOException ex) {
-                Logger.getLogger(Validador.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            
+            setup = s.nextLine();
+            
             
             Tabuleiro tab = new Tabuleiro(setup);
             
