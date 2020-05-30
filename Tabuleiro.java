@@ -3,25 +3,18 @@ public class Tabuleiro {
     public int m, n, cmp;
     public String str;
     public Peca q;
+    
     Tabuleiro(String repr){
-        
         str = repr.replaceAll(" ", "");
         cmp = repr.length();
         m = (int) Math.sqrt(repr.length());
-        
-        
-        
     }
-    
-   
-    
-    
+      
     Peca peca(int linha, int coluna){
         
         if(linha == 0){
             n = linha+coluna;
         }else{
-            
             n = m*linha+coluna;
         }
         
@@ -37,8 +30,6 @@ public class Tabuleiro {
             
             return q;
         }
-        
-        
           
     }
     
@@ -66,15 +57,14 @@ public class Tabuleiro {
                 
             }
         }
-            if(a == 4){
+        
+        if(a == 4){
+            return false;
             
-                return false;
-            
-            }else{
-            
-                return true;
-            }
+        }else{   
+            return true;
         }
+    }
     
              
     

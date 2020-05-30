@@ -1,13 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/**
- *
- * @author pierrote
- */
 public class Coluna implements Fila {
     
     private int cm, c, j;
@@ -47,22 +38,18 @@ public class Coluna implements Fila {
             }
             
         }
+        
         return dama;
-        
-        
     }
     
     public Peca peca(int pos) throws IndexOutOfBoundsException {
-      Tabuleiro t = new Tabuleiro(s);
+        Tabuleiro t = new Tabuleiro(s);
       
         if( pos >= j){
             throw new IndexOutOfBoundsException("Posição Inválida");
         }else{
             
                 return t.peca(pos, c);
-            
-            
         }
-        
     }    
 }

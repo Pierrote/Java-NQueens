@@ -1,9 +1,4 @@
 
-
-
-
-
-
 public class Linha implements Fila {
     private int cm, l;
     private String s;
@@ -42,19 +37,16 @@ public class Linha implements Fila {
         }
         return dama;
         
-        
     }
     
     public Peca peca(int pos) throws IndexOutOfBoundsException {
-      Tabuleiro t = new Tabuleiro(s);
+        Tabuleiro t = new Tabuleiro(s);
       
         if( pos >= cm){
             throw new IndexOutOfBoundsException("Posição Inválida");
         }else{
             
                 return t.peca(l, pos);
-            
-            
         }
         
     }    

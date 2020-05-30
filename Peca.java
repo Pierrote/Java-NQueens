@@ -1,13 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/**
- *
- * @author pierrote
- */
 public abstract class Peca {
     private Tabuleiro ta;
     private int line;
@@ -36,32 +27,28 @@ public abstract class Peca {
     boolean podeIrPara(int linha, int coluna){
         
         Peca r = ta.peca(linha, coluna);
-          
-      
         
-        
-       if(linha == line){
+        if(linha == line){
             if(r.vazia()){
-            return true;
-        }else{
-            return false;
+                return true;
+            }else{
+                return false;
+            }   
         }
-           
-       }
-       if(coluna == col){
-           
-               if(r.vazia()){
-            return true;
-        }else{
-            return false;
-        }
-        
-        
-    }
-       int l = line+1, c = col+1;
        
-       while(l<ta.m && c<ta.m){                 // DD direita
-           if(linha == l && coluna == c){
+        if(coluna == col){
+            if(r.vazia()){
+                return true;
+            }else{
+                return false;
+            }
+         
+        }
+        
+        int l = line+1, c = col+1;
+       
+        while(l<ta.m && c<ta.m){                 // DD direita
+            if(linha == l && coluna == c){
                
                 if(r.vazia()){
                     return true;
@@ -71,56 +58,55 @@ public abstract class Peca {
            }
            l++;
            c++;
-       }
+        }
        
-       l = line +1;
-       c = col-1;
+        l = line +1;
+        c = col-1;
        
-       while(l<ta.m && c>=0){                 // DD esquerda
-           if(linha == l && coluna == c){
+        while(l<ta.m && c>=0){                 // DD esquerda
+            if(linha == l && coluna == c){
                
                 if(r.vazia()){
                     return true;
                 }else{
                     return false;
                 }
-           }
-           l++;
-           c--;
-       }
+            }
+            l++;
+            c--;
+        }
        
-       l = line-1;
-       c = col-1;
+        l = line-1;
+        c = col-1;
        
-       while(l>=0 && c>=0){                 // DA esquerda
-           if(linha == l && coluna == c){
+        while(l>=0 && c>=0){                 // DA esquerda
+            if(linha == l && coluna == c){
                
                 if(r.vazia()){
                     return true;
                 }else{
                     return false;
                 }
-           }
-           l--;
-           c--;
-       }
+            }
+            l--;
+            c--;
+        }
        
-       l = line-1;
-       c = col+1;
+        l = line-1;
+        c = col+1;
        
-       while(l>= 0&& c<ta.m){                 // DA direita
-           if(linha == l && coluna == c){
+        while(l>= 0&& c<ta.m){                 // DA direita
+            if(linha == l && coluna == c){
                
                 if(r.vazia()){
                     return true;
                 }else{
                     return false;
                 }
-           }
-           l--;
-           c++;
-       }
-       
+            }
+            l--;
+            c++;
+        }
        
        return false;
        
@@ -128,93 +114,86 @@ public abstract class Peca {
     
     final boolean ataca (Peca vitima){
         
-   /* return podeIrPara(vitima.linha(), vitima.coluna());*/
-        
         Peca r = vitima;
        
         
-       if(r.linha() == line){
+        if(r.linha() == line){
             if(r.vazia()){
             return false;
-        }else{
-            return true;
-        }
-           
-       }
-       if(r.coluna() == col){
-           
-               if(r.vazia()){
-            return false;
-        }else{
-            return true;
+            }else{
+                return true;
+            }  
         }
         
+        if(r.coluna() == col){   
+            if(r.vazia()){
+                return false;
+            }else{
+                return true;
+            }
+        }
         
-    }
-       int l = line+1, c = col+1;
+        int l = line+1, c = col+1;
        
-       while(l<ta.m && c<ta.m){                 // DD direita
-           if(r.linha() == l && r.coluna() == c){
+        while(l<ta.m && c<ta.m){                 // DD direita
+            if(r.linha() == l && r.coluna() == c){  
+                if(r.vazia()){
+                    return false;
+                }else{
+                    return true;
+                }
+            }
+            l++;
+            c++;
+        }
+       
+        l = line +1;
+        c = col-1;
+       
+        while(l<ta.m && c>=0){                 // DD esquerda
+            if(r.linha() == l && r.coluna() == c){
                
                 if(r.vazia()){
                     return false;
                 }else{
                     return true;
                 }
-           }
-           l++;
-           c++;
-       }
+            }
+            l++;
+            c--;
+        }
        
-       l = line +1;
-       c = col-1;
+        l = line-1;
+        c = col-1;
        
-       while(l<ta.m && c>=0){                 // DD esquerda
-           if(r.linha() == l && r.coluna() == c){
+        while(l>=0 && c>=0){                 // DA esquerda
+            if(r.linha() == l && r.coluna() == c){
                
                 if(r.vazia()){
                     return false;
                 }else{
                     return true;
                 }
-           }
-           l++;
-           c--;
-       }
+            }
+            l--;
+            c--;
+        }
        
-       l = line-1;
-       c = col-1;
+        l = line-1;
+        c = col+1;
        
-       while(l>=0 && c>=0){                 // DA esquerda
-           if(r.linha() == l && r.coluna() == c){
+        while(l>= 0&& c<ta.m){                 // DA direita
+            if(r.linha() == l && r.coluna() == c){
                
                 if(r.vazia()){
                     return false;
                 }else{
                     return true;
                 }
-           }
-           l--;
-           c--;
-       }
-       
-       l = line-1;
-       c = col+1;
-       
-       while(l>= 0&& c<ta.m){                 // DA direita
-           if(r.linha() == l && r.coluna() == c){
-               
-                if(r.vazia()){
-                    return false;
-                }else{
-                    return true;
-                }
-           }
-           l--;
-           c++;
-       }
-       
-       
+            }
+            l--;
+            c++;
+        }
        return false;
     }
     
