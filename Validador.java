@@ -1,54 +1,33 @@
 
-import java.io.BufferedReader;
-import java.io.*;
-import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+import java.util.*;
 
 /**
- *
- * @author pierrote
+ * <p> Classe com duas vertentes que validam os tabuleiros </p>
+ * <p> A primeira vertente valida cada tabuleiro individualmente, retorna VALIDA se o tabuleiro for válido e retorna INVALIDA se o tabuleiro for inválido </p>
+ * <p> A segunda vertente irá retornar o tabuleiro introduzido caso este seja válido </p>
  */
+
+
 public class Validador {
+    
     
     public static void main(String[] args) {
         
         if(args.length == 0){
-            
-            /* Scanner s = new Scanner(System.in);
-            
-            String setup = s.nextLine();
-            
-            Tabuleiro tab = new Tabuleiro(setup);
-            
-            System.out.println(tab.ameacada(1, 0));*/
-            
-       
-            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-          
-            
-            
+                     
+            Scanner s = new Scanner(System.in);
+                                           
             String setup = null;
-        try {
-            setup = br.readLine();
-        } catch (IOException ex) {
-            Logger.getLogger(Validador.class.getName()).log(Level.SEVERE, null, ex);
-        }
-            
+                        
+            setup = s.nextLine();
+                       
             Tabuleiro tab = new Tabuleiro(setup);
             
             int count = 0;
             
             int po = 0;
             
-              
-            
+                       
             for(int l = 0; l < tab.m; l++){
                 for(int c = 0; c < tab.m; c++){
                     
@@ -56,7 +35,7 @@ public class Validador {
                         
                         if(tab.ameacada(l, c)){
                             
-                            System.out.println("Inválido");
+                            System.out.println("INVALIDA");
                             count = 1;
                             break;
                         }
@@ -71,71 +50,60 @@ public class Validador {
                 }
                     
                     
-                }
+            }
+            
             if(count == 0 ){
-                System.out.println("Válido");
+                System.out.println("VALIDA");
                     
             }
             
             
-            
-            
-            
-        }else if(args[0].equals("Filtro")){
+        }else if(args[0].equals("filtro")){
             
             Scanner s = new Scanner(System.in);
-          
-            
-            
+                     
             String set = null;
             
             
-                while(s.hasNext()){
-                    
+            while(s.hasNext()){
+                set = s.nextLine();
+                               
+                Tabuleiro tab = new Tabuleiro(set);
                    
-                        set = s.nextLine();
+                int count = 0;
                     
-                    
-                    Tabuleiro tab = new Tabuleiro(set);
-                    
-                    int count = 0;
-                    
-                    int po = 0;
-                    
-                    
-                    
-                    for(int l = 0; l < tab.m; l++){
-                        for(int c = 0; c < tab.m; c++){
+                int po = 0;
+                  
+                for(int l = 0; l < tab.m; l++){
+                    for(int c = 0; c < tab.m; c++){
                             
-                            if(set.charAt(po) == 'D'){
+                        if(set.charAt(po) == 'D'){
                                 
-                                if(tab.ameacada(l, c)){
-                                    
-                                    
-                                    count = 1;
-                                    break;
-                                }
-                                
+                            if(tab.ameacada(l, c)){
+                                count = 1;
+                                break;
                             }
+                                
+                        }
                             
-                            po++;
-                        }
-                        
-                        if(count == 1){
-                            break;
-                        }
-                        
-                        
+                        po++;
                     }
-                    if(count == 0 ){
-                        System.out.println(set);
                         
+                    if(count == 1){
+                        break;
                     }
+                        
+                        
+                }
+                
+                if(count == 0 ){
+                    System.out.println(set);      
+                }
                     
                     
-                }   
+            }   
                
-            }
+        }
     
     }
 }
